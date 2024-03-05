@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+    <style>
+        div{
+            line-height: 20px;
+        }
+        #check {
+            font-size: 80px;
+            font-weight: 800;
+            margin-top: 30px;
+        }
+        .enter{
+            font-size: 50px;
+            font-weight: 600;
+        }
+        .input-box{
+            height: 40px;
+            width: 500px;
+            font-size: 40px;
+        }
+        button{
+            height: 40px;
+            width: 300px;
+            font-size: 35px;
+            margin-top: 30px;
+        }
+        #result{
+            font-size: 40px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p id="check">Check Your BMI</p>
+        <p class="enter">Enter Your Weight and Height below to Check Your BMI Result : -</p>
+        <p class="enter">Put Your Weight in here(KG)</p>
+        <input type="number" placeholder="Enter your Weight" id="input-weight" class="input-box" value="">
+        <p class="enter">And Your height here(CM)</p>
+        <input type="number" placeholder="Enter your Height" id="input-height" class="input-box" value="">
+    </div>
+    <div>
+        <button id="calculate">Calculate BMI</button>
+    </div>
+    <p id="result"></p>
+    
+</body>
+<script>
+    document.getElementById("calculate").addEventListener("click",function(){
+        submit()
+    })
+    function submit(){
+       let weight = document.getElementById("input-weight").value
+       let height = document.getElementById("input-height").value
+       let bmi =  (weight) / (height * height)
+       let result = document.getElementById("result")
+       if (bmi <= 18.4){
+        message = "underweight"
+       }else if (bmi >= 18.5 && bmi <= 24.9){
+        message = "Normal Weight"
+       }else if(bmi >= 25 && bmi <= 29.9){
+        message  = "Overweight"
+       }else{
+        message = "obese"
+       }
+       result.innerHTML = "Your BMI is " + bmi.toFixed(1) + " Which means you are " + message ;       
+
+    }
+
+    
+</script>
+</html>
